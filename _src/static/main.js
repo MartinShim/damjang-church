@@ -29,7 +29,7 @@ function seriesLabel(s) {
   if (!box || !list || !list.length) return;
   var s = list[0];
 
-  document.getElementById("ls-video").href = "sermons.html";
+  document.getElementById("ls-video").href = "sermons.html?v=" + encodeURIComponent(s.id);
   document.getElementById("ls-thumb").src = "https://i.ytimg.com/vi/" + s.id + "/hqdefault.jpg";
   document.getElementById("ls-series").textContent = seriesLabel(s.series);
   document.getElementById("ls-title").textContent = s.title;
@@ -44,7 +44,7 @@ function seriesLabel(s) {
   }
 
   document.getElementById("ls-list").innerHTML = list.slice(1, 3).map(function (x) {
-    return '<a href="sermons.html">' + esc(x.title) + "<span>" + fmtDate(x.date).slice(5) + "</span></a>";
+    return '<a href="sermons.html?v=' + encodeURIComponent(x.id) + '">' + esc(x.title) + "<span>" + fmtDate(x.date).slice(5) + "</span></a>";
   }).join("");
 })();
 
