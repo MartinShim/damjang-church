@@ -77,6 +77,10 @@ function seriesLabel(s) {
     var s = list[i];
     frame.src = "https://www.youtube-nocookie.com/embed/" + s.id + "?rel=0" + (autoplay ? "&autoplay=1" : "");
     titleEl.textContent = s.title;
+    var passageEl = document.getElementById("now-passage");
+    var passage = s.summary && s.summary.passage;
+    passageEl.textContent = passage || "";
+    passageEl.hidden = !passage;
     metaEl.textContent = fmtDate(s.date) + " · 설교 임승민 목사";
     seriesEl.textContent = seriesLabel(s.series);
     linkEl.href = "https://www.youtube.com/watch?v=" + s.id;
@@ -88,8 +92,6 @@ function seriesLabel(s) {
       var sm = s.summary;
       box.hidden = !sm;
       if (sm) {
-        document.getElementById("summary-sub").innerHTML =
-          esc(s.title) + (sm.passage ? "<br>본문: " + esc(sm.passage) : "");
         document.getElementById("summary-body").innerHTML = sm.points.map(function (p, n) {
           return '<div class="card' + (n % 2 ? "" : " blue") + '"><h3><span class="n">0' + (n + 1) + "</span>" +
             esc(p.h) + "</h3><p>" + esc(p.p) + "</p></div>";
