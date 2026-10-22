@@ -314,12 +314,12 @@ def build():
             if others:
                 extra = """<section class="sec">
   <div class="wrap">
-    <div class="sec-head"><div><p class="lbl">Archive</p><h2 class="title">지난 주보</h2></div><a class="btn ghost" href="bulletins/index.html">전체 보기</a></div>
+    <div class="sec-head"><div><p class="lbl">Archive</p><h2 class="title">지난 주보</h2></div><a class="btn ghost" href="bulletins/index.html">지난 주보 보러가기</a></div>
     %s
   </div>
 </section>""" % r_archive_rows(others[:6], "")
             body = news_body(latest, "", "교회 소식",
-                             '%s 주보 · <a href="bulletins/%s.html">이 주보 전체 보기</a>' % (dot_date(latest["date"]), latest["date"])) + extra
+                             '%s 주보<div class="btns" style="margin-top:18px"><a class="btn" href="bulletins/index.html">지난 주보 보러가기</a></div>' % dot_date(latest["date"])) + extra
         write(os.path.join(ROOT, fname), page(body, m["title"], m["desc"], fname, "", fname in ("index.html", "sermons.html")))
 
     # 주보별 페이지
@@ -345,11 +345,11 @@ def build():
     </div>
   </div>
 </section>""" % (r_order(b, "#top"), r_sermon_card(b, "../"))
-        body = '<div id="top"></div>' + news_body(b, "../", "%s 주보" % ko_date(b["date"]), pager, extra) + \
+        body = '<div id="top"></div>' + news_body(b, "../", '교회소식 <span style="white-space:nowrap">(%s)</span>' % ko_date(b["date"]), pager, extra) + \
             '<section style="padding:48px 0"><div class="wrap">%s</div></section>' % pager
         write(os.path.join(ROOT, "bulletins", b["date"] + ".html"),
-              page(body, "%s 주보 | 담장너머교회" % ko_date(b["date"]),
-                   "담장너머교회 %s 주보 — 교회 소식, 일정, 예배 순서, 설교" % ko_date(b["date"]), "news.html", "../"))
+              page(body, "교회소식 (%s) | 담장너머교회" % ko_date(b["date"]),
+                   "담장너머교회 교회소식 (%s) — 교회 소식, 일정, 예배 순서, 설교" % ko_date(b["date"]), "news.html", "../"))
 
     # 지난 주보 목록
     groups = {}

@@ -267,7 +267,7 @@ a.card:hover { border-color: var(--blue); }
 .pager a { text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); }
 .pager a:hover { border-color: var(--blue); color: var(--blue-d); }
 .page-title .pt-sub { color: var(--mute); font-size: 17.5px; margin-top: 14px; }
-.page-title .pt-sub a { color: var(--blue-d); font-weight: 700; }
+.page-title .pt-sub a:not(.btn) { color: var(--blue-d); font-weight: 700; }
 .page-title .pager { margin-top: 4px; }
 .passage-l { font-size: 20px; font-weight: 700; color: var(--blue-d); margin: 4px 0 22px; }
 
