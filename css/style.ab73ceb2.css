@@ -71,6 +71,8 @@ h2.title { font-size: 44px; font-weight: 900; letter-spacing: -.04em; line-heigh
 .btn.ghost:hover { background: var(--soft); }
 .btn.light { background: #fff; color: var(--navy); border-color: #fff; }
 .btn.light:hover { background: var(--blue-l); }
+.btn.yt { background: #ff0000; border-color: #ff0000; color: #fff; }
+.btn.yt:hover { background: #cc0000; border-color: #cc0000; }
 .btn svg { width: 18px; height: 18px; flex: none; }
 
 .pill { display: inline-block; background: var(--blue-l); color: var(--blue-d); font-weight: 700; font-size: 13px; padding: 4px 12px; border-radius: 6px; }
