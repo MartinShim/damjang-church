@@ -314,12 +314,12 @@ def build():
             if others:
                 extra = """<section class="sec">
   <div class="wrap">
-    <div class="sec-head"><div><p class="lbl">Archive</p><h2 class="title">지난 주보</h2></div><a class="btn ghost" href="bulletins/index.html">지난 주보 보러가기</a></div>
+    <div class="sec-head"><div><p class="lbl">Archive</p><h2 class="title">지난 주보</h2></div><a class="btn ghost" href="bulletins/index.html">지난 소식 보러가기</a></div>
     %s
   </div>
 </section>""" % r_archive_rows(others[:6], "")
             body = news_body(latest, "", "교회 소식",
-                             '%s 주보<div class="btns" style="margin-top:18px"><a class="btn" href="bulletins/index.html">지난 주보 보러가기</a></div>' % dot_date(latest["date"])) + extra
+                             '%s 주보<div class="btns" style="margin-top:18px"><a class="btn" href="bulletins/index.html">지난 소식 보러가기</a></div>' % dot_date(latest["date"])) + extra
         write(os.path.join(ROOT, fname), page(body, m["title"], m["desc"], fname, "", fname in ("index.html", "sermons.html")))
 
     # 주보별 페이지
