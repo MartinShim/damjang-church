@@ -1,26 +1,45 @@
 # 담장너머교회 홈페이지
 
-정적 HTML 사이트입니다. 서버·DB·로그인 없이 `site/` 폴더를 그대로 올리면 됩니다
-(GitHub Pages, Netlify, Cloudflare Pages 등).
+정적 HTML 사이트입니다. 서버·DB·로그인 없이 GitHub Pages로 공개됩니다.
+https://martinshim.github.io/damjang-church/
 
-## 페이지
-| 파일 | 내용 |
+## 구조
+```
+_src/                      ← 원본 (사이트에 직접 보이지 않음)
+  build.py                 ← 원본으로 사이트 파일을 만드는 스크립트
+  pages/*.html             ← 페이지 본문
+  static/style.css, main.js
+  data/bulletins/YYYY-MM-DD.json   ← 주보 한 주 = 파일 하나
+  data/sermons.json        ← 유튜브 설교 목록 (최신이 위)
+
+*.html, bulletins/, css/, js/   ← build.py가 만든 결과물 (직접 고치지 않기)
+assets/                    ← 이미지
+```
+
+| 페이지 | 내용 |
 |---|---|
-| index.html | 홈 — 오직 성경·은혜·믿음, 예배 시간, 이번 주 말씀(자동), 교회 정체성, 오시는 길 |
-| about.html | 교회 소개 — 4가지 정체성, 담임목사 인사·프로필, 비전, 오시는 길 |
-| worship.html | 예배와 모임 — 예배 순서, 작은 모임, 헌금 계좌, 교육, 한 해 일정 |
-| news.html | 교회 소식 — 주보 내용(일정, 소식, 이달의 책, 경건생활 권면) |
-| sermons.html | 설교 — 유튜브 영상 플레이어 + 목록 + 분류 필터 |
+| index.html | 홈. "이번 주 말씀"은 설교 목록 맨 위 영상 |
+| about.html | 교회 소개 |
+| worship.html | 예배와 모임. 예배 순서는 최신 주보에서 자동 |
+| news.html | 교회 소식. 최신 주보 + 지난 주보 목록 |
+| bulletins/YYYY-MM-DD.html | 주보별 전체 (소식, 일정, 예배 순서, 설교, 책, 경건생활) |
+| bulletins/index.html | 지난 주보 전체 목록 |
+| sermons.html | 설교 영상 + 요약. `sermons.html?v=영상ID`로 특정 설교 바로 열기 |
 
-## 매주 바꿀 곳
-1. **news.html** — 주보 내용(일정 체크리스트, 소식, 이달의 책, 경건생활 권면)
-2. **worship.html** — 예배 순서 표 (찬송·본문·설교 제목)
-3. **js/sermons.js** — 새 설교 영상을 맨 위에 한 줄 추가 (설교 요약은 그 설교의 `summary`에 입력)
-   — 홈의 "이번 주 말씀"은 이 목록의 맨 위 설교로 자동 표시됩니다.
-   (`id`는 유튜브 주소 `watch?v=` 뒤 11자리)
+## 매주 주보 올리기
+1. `_src/data/bulletins/`에 그 주 날짜로 파일 추가 (예: `2026-10-25.json`, 지난 파일을 복사해 고치면 편함)
+2. 설교 영상이 올라오면
+   - `_src/data/sermons.json` 맨 위에 영상 한 줄 추가
+   - 그 주 주보 파일의 `"youtube"`에 영상 ID 입력 → 설교 페이지에 요약이 자동 연결
+3. `python3 _src/build.py` 실행
+4. 커밋 메시지 예: `주보 2026-10-25 반영` → GitHub에 올리면 1분 뒤 사이트 반영
+
+- 지난 일정 체크 표시는 주보 날짜 기준으로 자동 계산됩니다.
+- CSS/JS 파일 이름에 내용 해시가 붙어, 고칠 때마다 방문자 브라우저가 새 파일을 받습니다.
+- 주보 원본 PDF는 개인정보(계좌·연락처 등)가 있어 이 저장소에 올리지 않습니다.
 
 ## 미리보기
 ```
-python3 -m http.server 8765 -d site
+python3 -m http.server 8765
 ```
-브라우저에서 http://localhost:8765 (유튜브 임베드는 파일을 직접 열면 재생되지 않을 수 있어 로컬 서버를 권장합니다)
+이 폴더에서 실행 후 http://localhost:8765

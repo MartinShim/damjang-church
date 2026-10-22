@@ -117,5 +117,9 @@ function seriesLabel(s) {
     });
   });
 
-  select(0, false);
+  // sermons.html?v=영상ID 로 들어오면 그 설교를 먼저 보여줌
+  var want = new URLSearchParams(location.search).get("v");
+  var start = 0;
+  list.forEach(function (s, i) { if (s.id === want) start = i; });
+  select(start, false);
 })();

@@ -253,6 +253,24 @@ a.card:hover { border-color: var(--blue); }
 .yt-cta p { color: #c7d3e3; }
 .yt-cta strong { display: block; font-size: 21px; color: #fff; margin-bottom: 2px; }
 
+/* ---------- Bulletin archive ---------- */
+.archive { border-top: 2px solid var(--navy); }
+.archive li a { display: grid; grid-template-columns: 130px 1fr auto; gap: 20px; align-items: baseline; padding: 18px 4px; border-bottom: 1px solid var(--line); text-decoration: none; }
+.archive li a:hover { background: var(--soft); }
+.archive .ad { font-family: var(--en); font-weight: 700; color: var(--blue-d); font-size: 15px; }
+.archive .at { font-weight: 700; font-size: 17px; letter-spacing: -.02em; }
+.archive .ap { color: var(--mute); font-size: 14.5px; }
+.archive li.current a { background: var(--blue-l); }
+.archive-month { font-size: 20px; font-weight: 900; letter-spacing: -.02em; margin: 40px 0 14px; }
+.archive-month:first-child { margin-top: 0; }
+.pager { display: flex; flex-wrap: wrap; gap: 10px; }
+.pager a { text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); }
+.pager a:hover { border-color: var(--blue); color: var(--blue-d); }
+.page-title .pt-sub { color: var(--mute); font-size: 17.5px; margin-top: 14px; }
+.page-title .pt-sub a { color: var(--blue-d); font-weight: 700; }
+.page-title .pager { margin-top: 4px; }
+.passage-l { font-size: 20px; font-weight: 700; color: var(--blue-d); margin: 4px 0 22px; }
+
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 48px 0 36px; }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 32px; }
@@ -322,4 +340,5 @@ a.card:hover { border-color: var(--blue); }
   .book h3 { font-size: 21px; }
   .summary-grid .card p { text-align: left; }
   .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .archive li a { grid-template-columns: 1fr; gap: 2px; padding: 16px 2px; }
 }
