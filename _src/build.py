@@ -323,16 +323,9 @@ def build():
         write(os.path.join(ROOT, fname), page(body, m["title"], m["desc"], fname, "", fname in ("index.html", "sermons.html")))
 
     # 주보별 페이지
-    for i, b in enumerate(bulletins):
-        newer = bulletins[i - 1] if i > 0 else None
-        older = bulletins[i + 1] if i + 1 < len(bulletins) else None
-        nav = []
-        if older:
-            nav.append('<a href="%s.html">← %s 주보</a>' % (older["date"], dot_date(older["date"])))
-        nav.append('<a href="index.html">지난 주보 전체</a>')
-        if newer:
-            nav.append('<a href="%s.html">%s 주보 →</a>' % (newer["date"], dot_date(newer["date"])))
-        pager = '<div class="pager">%s</div>' % "".join(nav)
+    for b in bulletins:
+        # 교회 소식 페이지와 같은 '지난 교회소식 보러가기' 버튼 (목록으로)
+        sub = '%s 주보<div class="btns" style="margin-top:18px"><a class="btn" href="index.html">지난 교회소식 보러가기</a></div>' % dot_date(b["date"])
         extra = """<section class="sec soft">
   <div class="wrap split wide">
     <div>
@@ -345,8 +338,7 @@ def build():
     </div>
   </div>
 </section>""" % (r_order(b, "#top"), r_sermon_card(b, "../"))
-        body = '<div id="top"></div>' + news_body(b, "../", '교회소식 <span style="white-space:nowrap">(%s)</span>' % ko_date(b["date"]), pager, extra) + \
-            '<section style="padding:48px 0"><div class="wrap">%s</div></section>' % pager
+        body = '<div id="top"></div>' + news_body(b, "../", '교회소식 <span style="white-space:nowrap">(%s)</span>' % ko_date(b["date"]), sub, extra)
         write(os.path.join(ROOT, "bulletins", b["date"] + ".html"),
               page(body, "교회소식 (%s) | 담장너머교회" % ko_date(b["date"]),
                    "담장너머교회 교회소식 (%s) — 교회 소식, 일정, 예배 순서, 설교" % ko_date(b["date"]), "news.html", "../"))
