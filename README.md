@@ -1,7 +1,7 @@
 # 담장너머교회 홈페이지
 
 정적 HTML 사이트입니다. 서버·DB·로그인 없이 GitHub Pages로 공개됩니다.
-https://martinshim.github.io/damjang-church/
+https://www.damjangch.org/
 
 ## 구조
 ```
