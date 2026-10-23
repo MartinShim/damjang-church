@@ -116,6 +116,7 @@ h2.title { font-size: 44px; font-weight: 900; letter-spacing: -.04em; line-heigh
 
 /* ---------- Who we are ---------- */
 .who-g { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--navy); }
+.who-g.three { grid-template-columns: repeat(3, 1fr); }
 .who-g > div { padding: 30px 28px 10px 0; }
 .who-g > div + div { padding-left: 28px; border-left: 1px solid var(--line); }
 .who-g .n { font-family: var(--en); font-weight: 800; font-size: 15px; color: var(--blue); }
@@ -300,7 +301,7 @@ a.card:hover { border-color: var(--blue); }
   .hbtn { display: none; }
   .hero .wrap, .feat, .visit .wrap, .split, .split.wide, .now { grid-template-columns: 1fr; gap: 36px; }
   .cards, .cards.two, .summary-grid { grid-template-columns: 1fr; }
-  .who-g { grid-template-columns: 1fr 1fr; }
+  .who-g, .who-g.three { grid-template-columns: 1fr 1fr; }
   .who-g > div, .who-g > div + div { padding: 24px 16px 18px 0; border-left: 0; }
   .who-g > div:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
   .who-g > div:nth-child(n+3) { border-top: 1px solid var(--line); }
