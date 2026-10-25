@@ -216,7 +216,7 @@ def r_sermon_card(b, root):
     if s.get("youtube"):
         link = '<a class="btn" href="%ssermons.html?v=%s">설교 영상과 요약 보기</a>' % (root, s["youtube"])
     else:
-        link = '<p class="d" style="color:var(--mute)">설교 영상은 준비되는 대로 설교 페이지에 올라옵니다.</p>'
+        link = ""  # 영상이 없는 설교는 제목·본문만 표시
     return """<div class="card blue">
   <span class="pill">%s</span>
   <h3 style="font-size:26px;margin-top:14px">%s</h3>
