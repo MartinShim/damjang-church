@@ -163,6 +163,15 @@ a.card:hover { border-color: var(--blue); }
 .rows b { font-size: 18px; font-weight: 900; letter-spacing: -.02em; }
 .rows p { color: var(--mute); font-size: 15.5px; }
 .rows .n { font-family: var(--en); color: var(--blue); font-weight: 800; font-size: 14px; margin-right: 10px; }
+.rows.stack li { grid-template-columns: 1fr; gap: 8px; }
+.rows.stack li:has(> p:empty) { padding: 16px 0; }
+.classes { margin-top: 14px; border-top: 1px solid var(--line); }
+.classes .cl { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.classes .cl:last-child { border-bottom: 0; }
+.classes .pill { text-align: center; font-size: 12px; padding: 3px 0; }
+.classes .cn { font-weight: 700; color: var(--ink); font-size: 15.5px; margin-right: 8px; }
+.classes .ct { color: var(--blue-d); font-size: 13.5px; font-weight: 500; }
+.classes .cw { display: block; color: var(--mute); font-size: 14.5px; margin-top: 2px; }
 
 /* ---------- About ---------- */
 .greeting p { font-size: 17px; color: var(--ink-2); margin-bottom: 18px; line-height: 1.9; }
